@@ -5,16 +5,16 @@ import axios from "axios";
 const reducer = (state, action) => {
   switch (action.type) {
     case "INCREMENT":
-      return { newCount: state.newCount + 1, showText: state.showText };
+      return { ...state, newCount: state.newCount + 1 }; // Use the spread operator to spread the existing state instead of repeating state that hasn't changed
     case "TOGGLE":
-      return { newCount: state.newCount, showText: !state.showText };
+      return { ...state, showText: !state.showText }; // Use the spread operator to spread the existing state instead of repeating state that hasn't changed
     default:
       return state;
   }
 };
 
 function App() {
-  //set varibale and function to useState hook, 0 is the initial state value
+  //set variable and function to useState hook, 0 is the initial state value
   const [counter, setCounter] = useState(0);
   const [name, setName] = useState("");
   //create an object to hold all our states and a dispatch function to update them
@@ -33,9 +33,7 @@ function App() {
       .then((response) => {
         console.log(response);
         let newEmail = response.data[addEmail];
-        for (let index = 0; index < newEmail.length; index++) {
-          setAddEmail(newEmail[index]);
-        }
+        // Remove for loop (it isn't necessary)
         setInfo(newEmail);
       });
   }, [addEmail]);
@@ -49,6 +47,19 @@ function App() {
     setName(newValue);
   };
 
+    // Create a function to handle all counters
+  const incrementCount = (type) => {
+    // v1: Less code, easier to read
+    if (type === "counter") setCounter(counter + 1);
+    if (type === "email") setAddEmail(addEmail + 1);
+    // v2: More code, more difficult to read (works but lacks readability)
+    // return type === "counter" 
+    // ? setCounter(counter + 1)
+    // : type === "email" 
+    // ? setAddEmail(addEmail + 1) 
+    // : null
+  }
+
   return (
     <>
       <div className="mb-3 mt-3">
@@ -57,7 +68,7 @@ function App() {
         <button
           className="btn btn-warning mx-5"
           onClick={() => {
-            setCounter(counter + 1);
+            incrementCount("counter");
           }}
         >
           +
@@ -85,7 +96,7 @@ function App() {
         <button
           className="btn btn-danger"
           onClick={() => {
-            setAddEmail(addEmail + 1);
+            incrementCount("email");
           }}
         >
           next email
