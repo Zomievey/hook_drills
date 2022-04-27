@@ -67,6 +67,8 @@ function App() {
 
   return (
     <>
+      <div className="container">
+      <div className="container-fluid">
       <div className="mb-5 mt-3">
         <h5>1. This portion uses the useState hook:</h5>
         {counter}{" "}
@@ -119,6 +121,8 @@ function App() {
         <button onClick={handleClick} className="btn btn-primary mx-2">
           Change Name
         </button>
+        </div>
+        </div>
       </div>
     </>
   );
