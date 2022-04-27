@@ -97,34 +97,32 @@ function App() {
           {state.showText ? <h1>Hello</h1> : <h1>Goodbye</h1>}
         </div>
         <div className="mb-5">
-          <div className="col">
-            <h5>3. This portion uses the useEffect hook:</h5>
-            <div className="row">
-              <h1>Hello, {info.email}!</h1>
-            </div>
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                setAddEmail(addEmail + 1);
-              }}
-            >
-              Next Email
-            </button>
-          </div>
-        </div>
-        <div className="mb-3">
-          <h5>4. This portion uses the useRef hook:</h5>
-          <h1>Hello, {newName}!</h1>
-          <input
-            type="text"
-            placeholder="Ex..."
-            onChange={changeName}
-            ref={inputRef}
-          />
-          <button onClick={handleClick} className="btn btn-primary mx-2">
-            Change Name
+          <h5>3. This portion uses the useEffect hook:</h5>
+
+          <h1>Hello, {info.email}!</h1>
+
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              setAddEmail(addEmail + 1);
+            }}
+          >
+            Next Email
           </button>
         </div>
+      </div>
+      <div className="mb-3">
+        <h5>4. This portion uses the useRef hook:</h5>
+        <h1>Hello, {newName}!</h1>
+        <input
+          type="text"
+          placeholder="Ex..."
+          onChange={changeName}
+          ref={inputRef}
+        />
+        <button onClick={handleClick} className="btn btn-primary mt-2 mx-2">
+          Change Name
+        </button>
       </div>
     </>
   );
