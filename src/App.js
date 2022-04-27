@@ -51,8 +51,7 @@ function App() {
 
   const [addName, setAddName] = useState("");
   const [newName, setNewName] = useState("Username");
-  
-  
+
   let changeName = (e) => {
     const changeNameValue = e.target.value;
     setAddName(changeNameValue);
@@ -67,61 +66,64 @@ function App() {
 
   return (
     <>
-      <div className="container">
       <div className="container-fluid">
-      <div className="mb-5 mt-3">
-        <h5>1. This portion uses the useState hook:</h5>
-        {counter}{" "}
-        <button
-          className="btn btn-warning mx-5"
-          onClick={() => {
-            setCounter(counter + 1);
-          }}
-        >
-          +
-        </button>
-        <input placeholder="type something..." onChange={nameInput}></input>
-        <div className="my-3">{name}</div>
-      </div>
-      <h5>2. This portion uses the useReducer hook:</h5>
-      <div className="mb-5">
-        <h1>{state.newCount}</h1>
-        <button type="submit"
-          className="btn btn-secondary"
-          onClick={() => {
-            dispatch({ type: "INCREMENT" });
-            dispatch({ type: "TOGGLE" });
-          }}
-        >
-          Click Here
-        </button>
-        {state.showText ? <h1>Hello</h1> : <h1>Goodbye</h1>}
-      </div>
-      <div className="mb-5">
-        <h5>3. This portion uses the useEffect hook:</h5>
-        <h1>Hello, {info.email}!</h1>
-        <button
-          className="btn btn-danger"
-          onClick={() => {
-            setAddEmail(addEmail + 1);
-          }}
-        >
-          Next Email
-        </button>
-      </div>
-      <div className="mb-3">
-        <h5>4. This portion uses the useRef hook:</h5>
-        <h1>Hello, {newName}!</h1>
-        <input
-          type="text"
-          placeholder="Ex..."
-          onChange={changeName}
-          ref={inputRef}
-        />
-        <button onClick={handleClick} className="btn btn-primary mx-2">
-          Change Name
-        </button>
+        <div className="mb-5 mt-3">
+          <h5>1. This portion uses the useState hook:</h5>
+          {counter}{" "}
+          <button
+            className="btn btn-warning mx-5"
+            onClick={() => {
+              setCounter(counter + 1);
+            }}
+          >
+            +
+          </button>
+          <input placeholder="type something..." onChange={nameInput}></input>
+          <div className="my-3">{name}</div>
         </div>
+        <h5>2. This portion uses the useReducer hook:</h5>
+        <div className="mb-5">
+          <h1>{state.newCount}</h1>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => {
+              dispatch({ type: "INCREMENT" });
+              dispatch({ type: "TOGGLE" });
+            }}
+          >
+            Click Here
+          </button>
+          {state.showText ? <h1>Hello</h1> : <h1>Goodbye</h1>}
+        </div>
+        <div className="mb-5">
+          <div className="col">
+            <h5>3. This portion uses the useEffect hook:</h5>
+            <div className="row">
+              <h1>Hello, {info.email}!</h1>
+            </div>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                setAddEmail(addEmail + 1);
+              }}
+            >
+              Next Email
+            </button>
+          </div>
+        </div>
+        <div className="mb-3">
+          <h5>4. This portion uses the useRef hook:</h5>
+          <h1>Hello, {newName}!</h1>
+          <input
+            type="text"
+            placeholder="Ex..."
+            onChange={changeName}
+            ref={inputRef}
+          />
+          <button onClick={handleClick} className="btn btn-primary mx-2">
+            Change Name
+          </button>
         </div>
       </div>
     </>
